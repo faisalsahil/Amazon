@@ -1,0 +1,18 @@
+hello
+<div id="paintings">
+  <% @paintings.each do |painting| %>
+    <div class="painting">
+      <%= image_tag painting.image_url(:thumb).to_s %>
+      <div class="actions">
+        <%= link_to "remove", painting, :confirm => 'Are you sure?', :method => :delete %>
+      </div>
+    </div>
+  <% end %>
+  <div class="clear"></div>
+</div>
+
+<%= direct_upload_form_for @uploader do |f| %>
+  <p><%= f.file_field :image %></p>
+  <p><%= f.submit "Upload Image" %></p>
+<% end %>
+         <%#= link_to "add new", new_painting_path %>
